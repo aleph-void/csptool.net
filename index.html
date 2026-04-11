@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSP Tool - Browser Extension for Content Security Policy Development</title>
+  <meta name="description" content="Inspect, edit, and override Content Security Policies in real time. A developer tool for Chrome and Firefox." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <svg class="nav-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="var(--color-accent)" />
+          <path d="M8 11h16M8 16h12M8 21h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+        <span>CSP Tool</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#docs">Documentation</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <a href="#install" class="btn btn-sm btn-primary">Install</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#docs">Documentation</a>
+      <a href="#faq">FAQ</a>
+      <a href="#install" class="btn btn-primary">Install</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Open Source Browser Extension</div>
+        <h1>Take Control of Your<br /><span class="text-gradient">Content Security Policy</span></h1>
+        <p class="hero-subtitle">
+          Inspect, edit, and override CSP headers in real time. Debug violations, test policies,
+          and ship secure websites &mdash; all from your browser.
+        </p>
+        <div class="hero-actions">
+          <a href="#install" class="btn btn-primary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Install Now
+          </a>
+          <a href="#features" class="btn btn-outline btn-lg">Learn More</a>
+        </div>
+        <div class="hero-browsers">
+          <span class="hero-browsers-label">Available for</span>
+          <div class="browser-icons">
+            <div class="browser-icon" title="Google Chrome">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 3.5a6.5 6.5 0 0 1 5.6 3.2l-3.06 5.3a3.5 3.5 0 0 0-5.09 0L6.4 8.7A6.5 6.5 0 0 1 12 5.5zM5.5 12c0-.6.08-1.18.23-1.73L8.8 15.6a3.5 3.5 0 0 0 2.54 1.89l-3.06 5.3A6.5 6.5 0 0 1 5.5 12zm9.96 5.1a3.5 3.5 0 0 0 .04-3.6l3.06-5.3A6.48 6.48 0 0 1 18.5 12a6.5 6.5 0 0 1-6.22 6.49l3.18-1.39z"/></svg>
+              <span>Chrome</span>
+            </div>
+            <div class="browser-icon" title="Mozilla Firefox">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              <span>Firefox</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="popup-mockup">
+          <div class="popup-header">
+            <div class="popup-dots"><span></span><span></span><span></span></div>
+            <span class="popup-title">CSP Tool</span>
+          </div>
+          <div class="popup-tabs">
+            <span class="popup-tab active">Editor</span>
+            <span class="popup-tab">Errors <span class="tab-badge">3</span></span>
+            <span class="popup-tab">Settings</span>
+          </div>
+          <div class="popup-body">
+            <div class="popup-config-ribbon">
+              <div class="config-item active">Default</div>
+              <div class="config-item">Staging</div>
+              <div class="config-item add">+</div>
+            </div>
+            <div class="popup-editor">
+              <div class="directive-row">
+                <div class="directive-header">
+                  <span class="directive-toggle on"></span>
+                  <code>default-src</code>
+                  <span class="directive-actions"><span class="action-dot"></span><span class="action-dot red"></span></span>
+                </div>
+                <div class="directive-value">'self'</div>
+              </div>
+              <div class="directive-row">
+                <div class="directive-header">
+                  <span class="directive-toggle on"></span>
+                  <code>script-src</code>
+                  <span class="directive-actions"><span class="action-dot"></span><span class="action-dot red"></span></span>
+                </div>
+                <div class="directive-value">'self' 'nonce-abc123'</div>
+              </div>
+              <div class="directive-row">
+                <div class="directive-header">
+                  <span class="directive-toggle off"></span>
+                  <code>style-src</code>
+                  <span class="directive-actions"><span class="action-dot"></span><span class="action-dot red"></span></span>
+                </div>
+                <div class="directive-value dim">'self' 'unsafe-inline'</div>
+              </div>
+              <div class="popup-actions">
+                <span class="popup-btn outline">Reset</span>
+                <span class="popup-btn primary">Apply CSP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Everything You Need to<br /><span class="text-gradient">Master CSP</span></h2>
+        <p>A complete toolkit for inspecting, editing, and debugging Content Security Policies during development.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Live CSP Inspection</h3>
+          <p>Instantly view the active Content Security Policy from HTTP headers or meta tags. See exactly what directives are in place on any page.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <h3>Visual Editor</h3>
+          <p>Add, edit, toggle, and remove directives using a clean visual interface. No more hand-editing raw header strings.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Header Override</h3>
+          <p>Replace server-sent CSP headers entirely using the declarativeNetRequest API. Full control to tighten or loosen any policy.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3>Violation Tracking</h3>
+          <p>Monitor CSP violations as they happen. See the blocked resource, violated directive, and timestamps in real time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Multiple Configurations</h3>
+          <p>Save and switch between named CSP configurations. Assign URL patterns so the right policy applies to the right environment.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>15 Languages</h3>
+          <p>Full internationalization with support for English, Chinese, Spanish, German, French, Japanese, Korean, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>CSP Tool gives you two powerful modes for applying policy changes, depending on what you need.</p>
+      </div>
+      <div class="modes-grid">
+        <div class="mode-card">
+          <div class="mode-number">1</div>
+          <h3>Meta Tag Mode</h3>
+          <p class="mode-desc">The default mode. CSP Tool injects or modifies a <code>&lt;meta&gt;</code> tag in the page DOM to apply your policy changes.</p>
+          <ul class="mode-details">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              No page reload required
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Great for loosening policies during development
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-warn)" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Cannot tighten policies set by HTTP headers
+            </li>
+          </ul>
+          <div class="mode-tag">Default</div>
+        </div>
+        <div class="mode-card">
+          <div class="mode-number">2</div>
+          <h3>Header Override Mode</h3>
+          <p class="mode-desc">Intercepts and replaces the actual HTTP <code>Content-Security-Policy</code> response header before the browser processes it.</p>
+          <ul class="mode-details">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Full control &mdash; tighten or loosen any policy
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Can inject CSP on pages with no existing policy
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-warn)" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Requires page reload after changes
+            </li>
+          </ul>
+          <div class="mode-tag advanced">Advanced</div>
+        </div>
+      </div>
+      <div class="workflow-steps">
+        <h3 class="workflow-title">Typical Workflow</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Inspect</h4>
+              <p>Open the extension popup to see the active CSP on the current page.</p>
+            </div>
+          </div>
+          <div class="step-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Edit</h4>
+              <p>Add, modify, or toggle directives using the visual editor.</p>
+            </div>
+          </div>
+          <div class="step-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>Apply</h4>
+              <p>Click Apply to push the new policy to the page instantly.</p>
+            </div>
+          </div>
+          <div class="step-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Debug</h4>
+              <p>Check the Errors tab for violations and iterate until clean.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documentation -->
+  <section id="docs" class="docs">
+    <div class="container">
+      <div class="section-header">
+        <h2>Documentation</h2>
+        <p>Everything you need to get started and make the most of CSP Tool.</p>
+      </div>
+      <div class="docs-grid">
+        <!-- Getting Started -->
+        <div class="doc-card" id="doc-getting-started">
+          <h3>Getting Started</h3>
+          <div class="doc-content">
+            <h4>Installation</h4>
+            <ol>
+              <li>Install the extension from the <a href="#install">Chrome Web Store</a> or <a href="#install">Firefox Add-ons</a>.</li>
+              <li>Navigate to any website you want to inspect.</li>
+              <li>Click the CSP Tool icon in your browser toolbar to open the popup.</li>
+            </ol>
+            <h4>First Steps</h4>
+            <p>When you open CSP Tool on a page, it automatically detects any existing Content Security Policy &mdash; whether set via HTTP headers or a <code>&lt;meta&gt;</code> tag. The <strong>Editor</strong> tab shows the parsed directives. If the page has no CSP, you'll see a blank editor ready for you to build one.</p>
+            <p>Click <strong>Import from Page</strong> to pull the live policy into your editor and begin making changes.</p>
+          </div>
+        </div>
+
+        <!-- Editor -->
+        <div class="doc-card" id="doc-editor">
+          <h3>Using the Editor</h3>
+          <div class="doc-content">
+            <h4>Adding Directives</h4>
+            <p>Use the dropdown at the bottom of the editor to select from all 28 CSP directives defined in the specification, including:</p>
+            <ul>
+              <li><strong>Fetch directives</strong> &mdash; <code>default-src</code>, <code>script-src</code>, <code>style-src</code>, <code>img-src</code>, <code>font-src</code>, <code>connect-src</code>, <code>media-src</code>, <code>object-src</code>, <code>frame-src</code>, <code>child-src</code>, <code>worker-src</code>, <code>manifest-src</code></li>
+              <li><strong>Document directives</strong> &mdash; <code>base-uri</code>, <code>sandbox</code></li>
+              <li><strong>Navigation directives</strong> &mdash; <code>form-action</code>, <code>frame-ancestors</code>, <code>navigate-to</code></li>
+              <li><strong>Reporting</strong> &mdash; <code>report-uri</code>, <code>report-to</code></li>
+            </ul>
+            <h4>Editing Values</h4>
+            <p>Click a directive's value area to edit it. Values are space-separated, just like in a raw CSP string. Common values include <code>'self'</code>, <code>'none'</code>, <code>'unsafe-inline'</code>, <code>'unsafe-eval'</code>, <code>'nonce-...'</code>, and domain patterns like <code>https://cdn.example.com</code>.</p>
+            <h4>Toggling &amp; Deleting</h4>
+            <p>Each directive has a toggle switch to temporarily disable it without losing the values. Use the delete button to remove a directive entirely. The <strong>Reset</strong> button restores the original policy from the page.</p>
+          </div>
+        </div>
+
+        <!-- Configurations -->
+        <div class="doc-card" id="doc-configs">
+          <h3>Configurations</h3>
+          <div class="doc-content">
+            <h4>Managing Configs</h4>
+            <p>The left sidebar (Config Ribbon) lets you create and switch between multiple named configurations. Each config stores its own set of directives and URL patterns.</p>
+            <h4>URL Patterns</h4>
+            <p>Assign URL patterns to a configuration so it only applies to matching pages. Patterns use glob syntax:</p>
+            <div class="code-block">
+              <code>https://example.com/*</code><br />
+              <code>https://*.staging.example.com/*</code><br />
+              <code>*://localhost:3000/*</code>
+            </div>
+            <p>When a configuration has URL patterns, it will only activate on pages whose URL matches at least one pattern. Configurations without patterns apply to all pages.</p>
+          </div>
+        </div>
+
+        <!-- Violations -->
+        <div class="doc-card" id="doc-violations">
+          <h3>Violation Tracking</h3>
+          <div class="doc-content">
+            <p>The <strong>Errors</strong> tab captures CSP violations in real time via the browser's <code>securitypolicyviolation</code> event. For each violation you'll see:</p>
+            <ul>
+              <li><strong>Error message</strong> &mdash; what happened</li>
+              <li><strong>Violated directive</strong> &mdash; which directive blocked the resource</li>
+              <li><strong>Blocked URI</strong> &mdash; the resource that was denied</li>
+              <li><strong>Timestamp</strong> &mdash; when the violation occurred</li>
+            </ul>
+            <p>The tab badge shows a running count of violations. Use <strong>Clear All</strong> to reset and test again with a modified policy.</p>
+          </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="doc-card" id="doc-settings">
+          <h3>Settings</h3>
+          <div class="doc-content">
+            <h4>Override Mode</h4>
+            <p>Enable <strong>Override Mode</strong> in settings to replace the server's HTTP CSP header entirely. This uses the <code>declarativeNetRequest</code> API and requires a page reload after changes.</p>
+            <h4>Override When No CSP</h4>
+            <p>Enable this option to inject a CSP on pages that have no existing policy. Useful for testing what restrictions your policy would enforce before deploying to production.</p>
+            <h4>Theme</h4>
+            <p>Choose between <strong>Light</strong>, <strong>Dark</strong>, or <strong>System</strong> theme. The extension respects your OS preference by default.</p>
+            <h4>Language</h4>
+            <p>Select from 15 supported languages: English, Chinese, Spanish, German, French, Italian, Portuguese, Japanese, Korean, Russian, Polish, Arabic, Filipino, Hebrew, and Hindi.</p>
+          </div>
+        </div>
+
+        <!-- CSP Reference -->
+        <div class="doc-card" id="doc-csp-reference">
+          <h3>CSP Quick Reference</h3>
+          <div class="doc-content">
+            <p>Content Security Policy is an HTTP response header that controls which resources the browser is allowed to load for a given page. Here are common directives:</p>
+            <table class="ref-table">
+              <thead>
+                <tr><th>Directive</th><th>Controls</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>default-src</code></td><td>Fallback for all fetch directives</td></tr>
+                <tr><td><code>script-src</code></td><td>JavaScript sources</td></tr>
+                <tr><td><code>style-src</code></td><td>CSS sources</td></tr>
+                <tr><td><code>img-src</code></td><td>Image sources</td></tr>
+                <tr><td><code>connect-src</code></td><td>XHR, Fetch, WebSocket endpoints</td></tr>
+                <tr><td><code>font-src</code></td><td>Font file sources</td></tr>
+                <tr><td><code>frame-src</code></td><td>Iframe sources</td></tr>
+                <tr><td><code>frame-ancestors</code></td><td>Which pages can embed this page</td></tr>
+                <tr><td><code>form-action</code></td><td>Form submission targets</td></tr>
+                <tr><td><code>base-uri</code></td><td>Allowed <code>&lt;base&gt;</code> URLs</td></tr>
+                <tr><td><code>upgrade-insecure-requests</code></td><td>Upgrade HTTP to HTTPS</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install" class="install">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get CSP Tool</h2>
+        <p>Install for free on your preferred browser.</p>
+      </div>
+      <div class="install-grid">
+        <a href="#" class="install-card">
+          <svg class="install-browser-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" fill="#4285F4"/>
+            <circle cx="24" cy="24" r="8" fill="#fff"/>
+            <circle cx="24" cy="24" r="4" fill="#4285F4"/>
+            <path d="M24 16h18.4c-1.7-4.5-5-8.2-9.2-10.5L24 20" fill="#EA4335"/>
+            <path d="M14.8 33.5L6 18c-1.5 3-2 6.3-1.5 9.6.8 5.2 4 9.5 8.3 12.4" fill="#34A853"/>
+            <path d="M33.2 33.5L24 48c5.5 0 10.6-2 14.5-5.5 3-2.7 5.2-6.2 6.2-10" fill="#FBBC05"/>
+          </svg>
+          <h3>Chrome</h3>
+          <p>Chrome Web Store</p>
+          <span class="install-btn">Add to Chrome</span>
+        </a>
+        <a href="#" class="install-card">
+          <svg class="install-browser-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" fill="#FF7139"/>
+            <path d="M36 18c-.5-3-2.5-5.5-5-7-1.5-1-3.2-1.5-5-1.5.5 1 .8 2.2.8 3.5 0 4-3 7.5-7 8-.5 0-1 0-1.5-.1-2 3-1 7 2 9 2 1.3 4.3 1.6 6.5.8 3-1 5.5-3.5 6.5-6.5.7-2 .8-4.2.2-6.2h2.5z" fill="#fff"/>
+          </svg>
+          <h3>Firefox</h3>
+          <p>Firefox Add-ons</p>
+          <span class="install-btn">Add to Firefox</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is Content Security Policy?</summary>
+          <p>Content Security Policy (CSP) is a security standard implemented as an HTTP response header. It tells the browser which sources of content (scripts, styles, images, etc.) are allowed to load on a page. CSP helps prevent cross-site scripting (XSS), data injection attacks, and other code injection vulnerabilities.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can CSP Tool tighten a policy set by HTTP headers?</summary>
+          <p>In the default meta tag mode, no &mdash; browsers enforce the most restrictive policy between the HTTP header and meta tag. To tighten an existing HTTP header policy, enable <strong>Override Mode</strong> in settings, which replaces the header entirely before the browser processes it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does the extension modify my actual server headers?</summary>
+          <p>No. CSP Tool only modifies what the browser sees locally. Your server's actual response headers are never changed. All modifications happen client-side in your browser session and are not visible to other users or environments.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why do I need to reload the page in Override Mode?</summary>
+          <p>Override Mode uses the <code>declarativeNetRequest</code> API to intercept HTTP response headers. These rules take effect on new requests, so the page must be reloaded for the modified headers to be applied.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use different policies for different sites?</summary>
+          <p>Yes. Create multiple configurations in the Config Ribbon and assign URL patterns to each one. CSP Tool will automatically activate the right configuration based on the current page's URL.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is this extension open source?</summary>
+          <p>Yes. CSP Tool is open source and built with Vue 3, TypeScript, and Tailwind CSS. Contributions and bug reports are welcome on GitHub.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does CSP Tool work on all websites?</summary>
+          <p>CSP Tool works on most websites. However, browser extensions cannot run on certain restricted pages like the browser's internal pages (e.g., <code>chrome://</code> or <code>about:</code> URLs) or extension store pages.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="footer-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="var(--color-accent)" />
+            <path d="M8 11h16M8 16h12M8 21h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+          <span>CSP Tool</span>
+        </div>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#docs">Docs</a>
+          <a href="#faq">FAQ</a>
+          <a href="#">GitHub</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 CSP Tool. Open source under the MIT License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
