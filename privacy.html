@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - CSP Tool</title>
+  <meta name="description" content="Privacy policy and permission justifications for the CSP Tool browser extension." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <svg class="nav-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="var(--color-accent)" />
+          <path d="M8 11h16M8 16h12M8 21h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+        <span>CSP Tool</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#docs">Documentation</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html#install" class="btn btn-sm btn-primary">Install</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#docs">Documentation</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#install" class="btn btn-primary">Install</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Privacy Policy</div>
+        <h1>Your Data Stays<br /><span class="text-gradient">On Your Device</span></h1>
+        <p class="hero-subtitle">
+          CSP Tool does not collect, transmit, sell, or share any personal data. Everything the
+          extension does happens locally in your browser. This page explains exactly what each
+          permission is used for and why it is required.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Single purpose -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Single Purpose</h2>
+        <p>CSP Tool exists for one purpose only.</p>
+      </div>
+      <div class="doc-card" style="max-width: 800px; margin: 0 auto;">
+        <div class="doc-content">
+          <p><strong>CSP Tool is a developer tool for inspecting, editing, and overriding the Content Security Policy of web pages in real time.</strong></p>
+          <p>It helps developers debug CSP violations, test policy changes, and harden or relax policies during development &mdash; all from a popup or side panel in their browser. The extension does not analyze browsing behavior, build profiles, or perform any activity unrelated to CSP inspection and editing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data handling -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>Data Handling</h2>
+        <p>What we collect, transmit, and store &mdash; in plain English.</p>
+      </div>
+      <div class="modes-grid">
+        <div class="mode-card">
+          <h3>What We Collect</h3>
+          <p class="mode-desc"><strong>Nothing.</strong> CSP Tool does not collect personally identifiable information, browsing history, authentication credentials, location, financial data, health information, communications, or any other personal data.</p>
+        </div>
+        <div class="mode-card">
+          <h3>What We Transmit</h3>
+          <p class="mode-desc"><strong>Nothing.</strong> The extension makes no network requests to any server operated by us or any third party. All processing happens locally in your browser.</p>
+        </div>
+        <div class="mode-card">
+          <h3>What We Store</h3>
+          <p class="mode-desc">Only your CSP configurations, URL patterns, and UI preferences (theme, language). This data is stored locally via the browser's <code>storage</code> API and is never transmitted off your device.</p>
+        </div>
+        <div class="mode-card">
+          <h3>Data Sale &amp; Sharing</h3>
+          <p class="mode-desc">We do <strong>not</strong> sell or share user data with third parties. We do not use user data for advertising, credit assessment, or any purpose unrelated to the extension's single purpose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Permission justifications -->
+  <section class="docs">
+    <div class="container">
+      <div class="section-header">
+        <h2>Permission Justifications</h2>
+        <p>Each permission CSP Tool requests, and why it is required for the extension to function.</p>
+      </div>
+      <div class="docs-grid">
+        <div class="doc-card">
+          <h3><code>activeTab</code></h3>
+          <div class="doc-content">
+            <p>Used to read the Content Security Policy of the page the user is currently viewing when they open the CSP Tool popup. Without <code>activeTab</code>, the extension cannot inspect the active page's CSP headers or meta tags &mdash; which is its core function. Access is granted only when the user explicitly invokes the extension on a tab.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3><code>declarativeNetRequest</code></h3>
+          <div class="doc-content">
+            <p>Used to replace or modify the <code>Content-Security-Policy</code> response header on pages the user has chosen to override. This is required for "Header Override Mode," which lets developers tighten policies set by HTTP headers (something a meta tag cannot do). Rules are generated entirely from the user's local configuration and are never fetched from a remote server.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3><code>declarativeNetRequestWithHostAccess</code></h3>
+          <div class="doc-content">
+            <p>Required so that the user's CSP override rules can apply to the specific hosts they have configured URL patterns for. This permission allows declarativeNetRequest rules to act on hosts the user has granted access to, which is essential for per-site CSP configurations.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3>Host Permissions</h3>
+          <div class="doc-content">
+            <p>CSP Tool requests host access so it can read CSP headers from and inject CSP changes into pages the user wants to test. CSP is a per-origin security mechanism, so the extension must be able to interact with the specific origins the developer is debugging. Host access is used solely to inspect and modify CSP for the user's own development and debugging workflow.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3>Remote Code</h3>
+          <div class="doc-content">
+            <p><strong>CSP Tool does not execute remote code.</strong> The extension contains no <code>eval</code> of remote payloads, no remotely hosted scripts, and no dynamic module imports from external URLs. All JavaScript that runs is bundled inside the extension package and reviewed as part of the published version. The only "dynamic" content is the CSP string the user types into the editor, which is applied as a policy &mdash; not executed as code.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3><code>scripting</code></h3>
+          <div class="doc-content">
+            <p>Used to inject a small content script into the active page so the extension can: (1) read the existing <code>&lt;meta http-equiv="Content-Security-Policy"&gt;</code> tag, (2) inject or update a meta tag in "Meta Tag Mode," and (3) listen for <code>securitypolicyviolation</code> events to surface CSP violations to the user. The injected script only handles CSP-related operations.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3><code>sidePanel</code></h3>
+          <div class="doc-content">
+            <p>Used to provide an optional side-panel UI in addition to the popup. The side panel gives developers a persistent view of the editor and violation log while they interact with the page being tested, which is significantly more usable than a popup that closes on every click.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3><code>storage</code></h3>
+          <div class="doc-content">
+            <p>Used to persist the user's saved CSP configurations, URL patterns, theme preference, and language selection across browser sessions. All data stored via this permission stays on the user's device and is never synced to or transmitted from any remote server by the extension.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3><code>tabs</code></h3>
+          <div class="doc-content">
+            <p>Used to read the URL of the current tab so the extension can match it against the user's saved URL patterns and apply the correct CSP configuration. Also used to reload the active tab after the user applies header-override changes (which require a reload to take effect). The extension does not enumerate, track, or report on the user's tabs.</p>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <h3><code>webRequest</code></h3>
+          <div class="doc-content">
+            <p>Used to observe the <code>Content-Security-Policy</code> response headers sent by the server so they can be parsed and displayed in the editor. This is read-only inspection used to show the developer the policy currently in effect on the page; header modification itself is performed through <code>declarativeNetRequest</code>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance -->
+  <section class="install">
+    <div class="container">
+      <div class="section-header">
+        <h2>Developer Program Policy Compliance</h2>
+        <p>Our certification under the Chrome Web Store Developer Program Policies.</p>
+      </div>
+      <div class="doc-card" style="max-width: 800px; margin: 0 auto;">
+        <div class="doc-content">
+          <p>We certify that CSP Tool's data usage complies with the Chrome Web Store Developer Program Policies. Specifically:</p>
+          <ul>
+            <li>We do <strong>not</strong> sell user data to third parties.</li>
+            <li>We do <strong>not</strong> use or transfer user data for purposes unrelated to the extension's single purpose.</li>
+            <li>We do <strong>not</strong> use or transfer user data to determine creditworthiness or for lending purposes.</li>
+            <li>All permissions requested are used solely to support CSP inspection, editing, and override functionality as described above.</li>
+          </ul>
+          <p>Questions, concerns, or reports about this privacy policy can be submitted as an issue on our public GitHub repository: <a href="https://github.com/alephvoid/csptool-web/issues" target="_blank" rel="noopener">github.com/alephvoid/csptool-web/issues</a>. See also our <a href="support.html">Support page</a>.</p>
+          <p style="opacity: 0.7; font-size: 0.9em;">Last updated: April 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="footer-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="var(--color-accent)" />
+            <path d="M8 11h16M8 16h12M8 21h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+          <span>CSP Tool</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#docs">Docs</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="support.html">Support</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="https://github.com/alephvoid/csptool-web" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p class="footer-copy">Created by <a href="https://alephvoid.com" target="_blank" rel="noopener">Aleph Void LLC</a>. &copy; 2026 CSP Tool.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
