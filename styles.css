@@ -783,6 +783,9 @@ code {
   width: 100%;
   border-collapse: collapse;
   margin-top: 12px;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .ref-table th,
 .ref-table td {
@@ -936,7 +939,8 @@ code {
 }
 .footer-links {
   display: flex;
-  gap: 28px;
+  flex-wrap: wrap;
+  gap: 16px 28px;
 }
 .footer-links a {
   color: var(--color-text-secondary);
@@ -951,7 +955,27 @@ code {
   color: var(--color-text-muted);
 }
 
+/* ===== Hero: pages without a visual mockup (privacy, support) ===== */
+.hero .container > .hero-content:only-child {
+  grid-column: 1 / -1;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero .container > .hero-content:only-child .hero-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero .container > .hero-content:only-child .hero-actions {
+  justify-content: center;
+}
+.hero .container > .hero-content:only-child .hero-browsers {
+  justify-content: center;
+}
+
 /* ===== Responsive ===== */
+
+/* --- Tablet: ≤ 1024px --- */
 @media (max-width: 1024px) {
   .hero .container {
     grid-template-columns: 1fr;
@@ -961,10 +985,25 @@ code {
   .hero-subtitle { margin: 0 auto 32px; }
   .hero-actions { justify-content: center; }
   .hero-browsers { justify-content: center; }
+
+  .features,
+  .how-it-works,
+  .docs,
+  .install,
+  .faq { padding: 80px 0; }
+
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .docs-grid { grid-template-columns: 1fr; }
+
+  .section-header { margin-bottom: 48px; }
 }
 
+/* --- Large tablet / small laptop: portrait iPad Pro and similar --- */
+@media (max-width: 900px) {
+  .modes-grid { grid-template-columns: 1fr; }
+}
+
+/* --- Mobile: ≤ 768px --- */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-actions .btn { display: none; }
@@ -972,8 +1011,17 @@ code {
 
   .hero { padding: calc(var(--nav-height) + 48px) 0 64px; }
   .hero h1 { font-size: 2rem; }
+
+  .features,
+  .how-it-works,
+  .docs,
+  .install,
+  .faq { padding: 64px 0; }
+
+  .section-header { margin-bottom: 36px; }
+  .section-header p { font-size: 1rem; }
+
   .feature-grid { grid-template-columns: 1fr; }
-  .modes-grid { grid-template-columns: 1fr; }
   .steps { flex-direction: column; align-items: center; }
   .step-arrow { transform: rotate(90deg); padding: 0; }
   .install-grid { grid-template-columns: 1fr; max-width: 340px; }
@@ -986,10 +1034,39 @@ code {
   .footer-links { justify-content: center; }
 }
 
+/* --- Small phone: ≤ 480px --- */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
+
+  .hero { padding: calc(var(--nav-height) + 32px) 0 48px; }
   .hero h1 { font-size: 1.7rem; }
+  .hero-visual { display: none; }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions .btn {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .features,
+  .how-it-works,
+  .docs,
+  .install,
+  .faq { padding: 48px 0; }
+
   .section-header h2 { font-size: 1.6rem; }
-  .mode-card { padding: 28px 24px; }
-  .doc-card { padding: 28px 24px; }
+  .section-header { margin-bottom: 28px; }
+
+  .feature-card { padding: 28px 20px; }
+  .mode-card { padding: 28px 20px; }
+  .doc-card { padding: 24px 18px; }
+
+  .faq-item summary { padding: 16px 18px; font-size: .95rem; }
+  .faq-item p { padding: 0 18px 16px; }
+
+  .footer { padding: 36px 0; }
+  .footer-links { gap: 12px 20px; }
+  .footer-copy { font-size: .8rem; }
 }
