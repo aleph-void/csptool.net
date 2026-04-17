@@ -76,8 +76,8 @@ The **Errors** tab captures `securitypolicyviolation` events in real time. Each 
 
 Install for free from your browser's extension store:
 
-- **Chrome** — Chrome Web Store
-- **Firefox** — Firefox Add-ons
+- **Chrome** — [Chrome Web Store](https://chromewebstore.google.com/detail/csptool/dcbjnefealdfahfgbmdmpeeojcdfkjdl)
+- **Firefox** — [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/csptool/)
 
 ## Tech Stack
 
