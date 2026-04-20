@@ -355,6 +355,21 @@
           </div>
         </div>
 
+        <!-- CSP Receiver -->
+        <div class="doc-card" id="doc-receiver">
+          <h3>Capturing Violations with csptool-receiver</h3>
+          <div class="doc-content">
+            <p><a href="https://github.com/aleph-void/csptool-receiver" target="_blank" rel="noopener"><strong>csptool-receiver</strong></a> is a companion web application that collects CSP violation reports sent via the <code>report-to</code> and <code>report-uri</code> directives. It is designed to work alongside CSP Tool to give researchers a complete violation capture pipeline.</p>
+            <h4>How to Use</h4>
+            <ol>
+              <li>Deploy <a href="https://github.com/aleph-void/csptool-receiver" target="_blank" rel="noopener">csptool-receiver</a> to a host reachable from your target page.</li>
+              <li>In CSP Tool's editor, override the <code>report-uri</code> or <code>report-to</code> directive to point at your csptool-receiver endpoint.</li>
+              <li>Browse the target site &mdash; the browser will POST violation reports to your collector in real time.</li>
+            </ol>
+            <p>This workflow lets you capture violations that occur outside the browser tab (e.g. in workers or cross-origin frames) which are not surfaced by the built-in Errors tab.</p>
+          </div>
+        </div>
+
         <!-- Settings -->
         <div class="doc-card" id="doc-settings">
           <h3>Settings</h3>
@@ -491,6 +506,7 @@
           <a href="support.html">Support</a>
           <a href="privacy.html">Privacy</a>
           <a href="https://github.com/alephvoid/csptool-web" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/aleph-void/csptool-receiver" target="_blank" rel="noopener">csptool-receiver</a>
         </div>
         <p class="footer-copy">Created by <a href="https://alephvoid.com" target="_blank" rel="noopener">Aleph Void LLC</a>. &copy; 2026 CSP Tool.</p>
       </div>

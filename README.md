@@ -72,6 +72,18 @@ The **Errors** tab captures `securitypolicyviolation` events in real time. Each 
 - Blocked URI
 - Timestamp
 
+## Capturing Violations with csptool-receiver
+
+[**csptool-receiver**](https://github.com/aleph-void/csptool-receiver) is a companion web application that collects CSP violation reports sent via the `report-to` and `report-uri` directives. It is designed to work alongside CSP Tool to give researchers a complete violation capture pipeline.
+
+### How to Use
+
+1. Deploy [csptool-receiver](https://github.com/aleph-void/csptool-receiver) to a host reachable from your target page.
+2. In CSP Tool's editor, override the `report-uri` or `report-to` directive to point at your csptool-receiver endpoint.
+3. Browse the target site — the browser will POST violation reports to your collector in real time.
+
+This workflow captures violations that occur outside the browser tab (e.g. in workers or cross-origin frames) which are not surfaced by the built-in Errors tab.
+
 ## Installation
 
 Install for free from your browser's extension store:
@@ -82,6 +94,10 @@ Install for free from your browser's extension store:
 ## Tech Stack
 
 Built with Vue 3, TypeScript, and Tailwind CSS.
+
+## Related Projects
+
+- [csptool-receiver](https://github.com/aleph-void/csptool-receiver) — companion server for capturing CSP violation reports
 
 ## License
 
