@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="https://alephvoid.com/assets/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,16 +24,13 @@
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#docs">Documentation</a>
         <a href="#faq">FAQ</a>
       </div>
       <div class="nav-actions">
         <a href="#install" class="btn btn-sm btn-primary">Install</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
       </div>
       <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -41,6 +38,7 @@
     </div>
     <div class="mobile-menu" id="mobile-menu">
       <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
       <a href="#how-it-works">How It Works</a>
       <a href="#docs">Documentation</a>
       <a href="#faq">FAQ</a>
@@ -52,7 +50,6 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge">Open Source Browser Extension</div>
         <h1>Take Control of Your<br /><span class="text-gradient">Content Security Policy</span></h1>
         <p class="hero-subtitle">
           Inspect, edit, and override CSP headers in real time. Debug violations, test policies,
@@ -136,7 +133,8 @@
   <section id="features" class="features">
     <div class="container">
       <div class="section-header">
-        <h2>Everything You Need to<br /><span class="text-gradient">Master CSP</span></h2>
+        <span class="section-label">// Features</span>
+        <h2>Everything You Need to <span class="text-gradient">Master CSP</span></h2>
         <p>A complete toolkit for inspecting, editing, and debugging Content Security Policies during development.</p>
       </div>
       <div class="feature-grid">
@@ -186,11 +184,70 @@
     </div>
   </section>
 
+  <!-- Screenshots -->
+  <section id="screenshots" class="screenshots">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">// Screenshots</span>
+        <h2>See It <span class="text-gradient">In Action</span></h2>
+        <p>A tour through the extension popup &mdash; editor, violation tracking, settings, and more.</p>
+      </div>
+      <div class="screenshots-grid">
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="screenshots/screenshot1.png" alt="CSP Tool editor showing parsed directives for the active page" loading="lazy" />
+          </div>
+          <div class="screenshot-caption">
+            <h3>Visual CSP Editor</h3>
+            <p>Browse, toggle, and edit each directive of the active page's Content Security Policy.</p>
+          </div>
+        </div>
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="screenshots/screenshot2.png" alt="Errors tab showing no CSP violations detected" loading="lazy" />
+          </div>
+          <div class="screenshot-caption">
+            <h3>Violation Tracking</h3>
+            <p>Watch CSP violations stream in as the page runs, with directives and blocked URIs surfaced in real time.</p>
+          </div>
+        </div>
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="screenshots/screenshot3.png" alt="Settings panel with language, theme, and override mode controls" loading="lazy" />
+          </div>
+          <div class="screenshot-caption">
+            <h3>Settings &amp; Modes</h3>
+            <p>Switch between meta-tag and header-override modes, choose a theme, and pick from 15 languages.</p>
+          </div>
+        </div>
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="screenshots/screenshot4.png" alt="Settings explanation of how override modes work" loading="lazy" />
+          </div>
+          <div class="screenshot-caption">
+            <h3>Inline Guidance</h3>
+            <p>Context-aware help explains override modes and shows exactly where each CSP on the page came from.</p>
+          </div>
+        </div>
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="screenshots/screenshot5.png" alt="About tab with CSP Tool summary and useful links" loading="lazy" />
+          </div>
+          <div class="screenshot-caption">
+            <h3>About &amp; Links</h3>
+            <p>Quick access to documentation, the csptool.net site, and the Aleph Void homepage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- How it works -->
   <section id="how-it-works" class="how-it-works">
     <div class="container">
       <div class="section-header">
-        <h2>How It Works</h2>
+        <span class="section-label">// How It Works</span>
+        <h2>Two Modes, <span class="text-gradient">One Workflow</span></h2>
         <p>CSP Tool gives you two powerful modes for applying policy changes, depending on what you need.</p>
       </div>
       <div class="modes-grid">
@@ -284,7 +341,8 @@
   <section id="docs" class="docs">
     <div class="container">
       <div class="section-header">
-        <h2>Documentation</h2>
+        <span class="section-label">// Documentation</span>
+        <h2>Learn the <span class="text-gradient">Tool</span></h2>
         <p>Everything you need to get started and make the most of CSP Tool.</p>
       </div>
       <div class="docs-grid">
@@ -418,7 +476,8 @@
   <section id="install" class="install">
     <div class="container">
       <div class="section-header">
-        <h2>Get CSP Tool</h2>
+        <span class="section-label">// Install</span>
+        <h2>Get <span class="text-gradient">CSP Tool</span></h2>
         <p>Install for free on your preferred browser.</p>
       </div>
       <div class="install-grid">
@@ -452,7 +511,8 @@
   <section id="faq" class="faq">
     <div class="container">
       <div class="section-header">
-        <h2>Frequently Asked Questions</h2>
+        <span class="section-label">// FAQ</span>
+        <h2>Frequently Asked <span class="text-gradient">Questions</span></h2>
       </div>
       <div class="faq-list">
         <details class="faq-item">
