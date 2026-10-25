@@ -1,5 +1,7 @@
 # CSP Tool
 
+[![Sponsor Aleph Void](https://img.shields.io/badge/Sponsor-Aleph%20Void-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/aleph-void)
+
 **CSP Tool** is an open-source browser extension for inspecting, editing, and overriding Content Security Policies in real time. Available for Chrome and Firefox.
 
 Website: [https://csptool.net](https://csptool.net)
